@@ -1,17 +1,15 @@
 /** @type {import('next').NextConfig} */
 //  add url media (image)
 const nextConfig = {
-    images: {
-        remotePatterns: [
-          {
-            protocol: 'http',
-            hostname: '188.121.118.102',
-            pathname: '/**',
-          },
-        ],
+  images: {
+    remotePatterns: [
+      {
+      protocol: 'http',
+      hostname: 'admin.levenbakery.ir',
+      pathname: '/**',
       },
+    ],
+    },
 };
-
-
 
 export default nextConfig;

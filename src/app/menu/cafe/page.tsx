@@ -142,16 +142,14 @@ export type Categories = APIResponse<
   }[]
 >;
 
-import Image from "next/image";
-import Glassicon from "../../../../public/icon/glass";
-import Card from "./_components/card";
-import { useQuery } from "react-query";
-import Api, { BASE_URL, BASE_URL_MEDIA } from "@/service/service";
-import Category from "./_components/category";
+import Api, { BASE_URL_MEDIA } from "@/service/service";
 import { AxiosResponse } from "axios";
-import path from "path";
-import { get } from "http";
+import Image from "next/image";
 import { Oval } from "react-loader-spinner";
+import { useQuery } from "react-query";
+import Card from "./_components/card";
+import Category from "./_components/category";
+import { useState } from "react";
 
 const Cafepage = () => {
   const categoriesQuery = useQuery<Categories>({
@@ -161,6 +159,8 @@ const Cafepage = () => {
         "/categories?populate[icon]=*&populate[items][populate][0]=image"
       ),
   });
+
+  const [categoryId, setCategoryId] = useState<number | undefined>(undefined);
 
   const getImgUrl = (url?: string) => {
     if (!url) return undefined;
@@ -208,6 +208,8 @@ const Cafepage = () => {
             {categories?.map((category) => (
               <div className="py-3 flex-shrink-0">
                 <Category
+                  onClick={() => setCategoryId(category.id)}
+                  isActive={categoryId === category.id}
                   id={category.id}
                   imageUrl={getImgUrl(category.icon.url)}
                   name={category.name}
