@@ -13,7 +13,7 @@ const Themenupage = () => {
         <div className="pb-32">
           <Image
             src={"/logocafe.png"}
-            alt="logocafe"
+            alt="logocafeeeee"
             height={130}
             width={270}
           />
